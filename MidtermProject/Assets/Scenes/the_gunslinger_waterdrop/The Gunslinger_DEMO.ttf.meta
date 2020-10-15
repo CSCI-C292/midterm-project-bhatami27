@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: be45dc4a2ad48024ab7b734bbb551ca0
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: The Gunslinger Waterdrop
+  fontNames:
+  - The Gunslinger Waterdrop
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: ba1db3a71c7fd2e43b85e76ebc2d9860, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
