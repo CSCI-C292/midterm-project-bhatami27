@@ -11,7 +11,7 @@ public class PlayerControl : MonoBehaviour
     Rigidbody2D rigBody;
     public float JumpForce = 1;
     public GameObject bulletToRight, bulletToLeft, gameOverText, restartButton, s1, s2, s3;
-    public int playerHealth = 3;
+    public static int playerHealth = 3;
     //int playerLayer, enemyLayer;
     bool coroutineAllowed = true;
     Color color;

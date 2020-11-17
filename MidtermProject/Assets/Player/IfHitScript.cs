@@ -6,7 +6,6 @@ public class IfHitScript : MonoBehaviour
 {
     Renderer rend;
     Color c;
-    public PlayerControl playerControl;
 
     
 
@@ -19,7 +18,7 @@ public class IfHitScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.name.Equals("Enemy") && playerControl.playerHealth >0){
+        if(col.gameObject.name.Equals("Enemy") && PlayerControl.playerHealth >0){
             StartCoroutine("GetInvulnerable");
             
         }
@@ -27,7 +26,7 @@ public class IfHitScript : MonoBehaviour
 
     IEnumerator GetInvulnerable(){
         Physics2D.IgnoreLayerCollision(8,9,true);
-        c.a =1f;
+        c.a =0.5f;
         rend.material.color = c;
         yield return new WaitForSeconds(3f);
         Physics2D.IgnoreLayerCollision(8,9,false);

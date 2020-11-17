@@ -14,8 +14,8 @@ public class Enemy3Script : MonoBehaviour
     {
         localScale = transform.localScale;
         rb = GetComponent<Rigidbody2D>();
-        leftWayPoint = GameObject.Find("LeftWayPoint").GetComponent<Transform>();
-        rightWayPoint = GameObject.Find("RightWayPoint").GetComponent<Transform>();
+        leftWayPoint = GameObject.Find("LeftWayPoint3").GetComponent<Transform>();
+        rightWayPoint = GameObject.Find("RightWayPoint3").GetComponent<Transform>();
         
     }
 
