@@ -17,6 +17,9 @@ public class FireBallScript : MonoBehaviour
     void Update()
     {
         rb.velocity = new Vector2(velX,velY);
-        Destroy(gameObject, 3f);
+    }
+
+    void OnCollisionEnter2D(Collision2D col){
+        Destroy(gameObject);
     }
 }

@@ -120,7 +120,7 @@ public class PlayerControl : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D col){
-        if(col.gameObject.tag.Equals("Enemy")){
+        if(col.gameObject.tag.Equals("Enemy") || col.gameObject.tag.Equals("Boss") ){
             
 
             playerHealth -= 1;
