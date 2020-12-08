@@ -19,5 +19,7 @@ public class RestartButtonScript : MonoBehaviour
     public void restartScene(){
         SceneManager.LoadScene("SampleScene");
         ScoreScript.scoreValue = 0;
+        PlayerControl.playerHealth = 3;
+        BossScript.bossHealth = 10;
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy3Script : MonoBehaviour
 {
+    public AudioSource deathSound;
     public float moveSpeed = 3f;
     Transform leftWayPoint, rightWayPoint;
     Vector3 localScale;
@@ -17,6 +18,7 @@ public class Enemy3Script : MonoBehaviour
         leftWayPoint = GameObject.Find("LeftWayPoint3").GetComponent<Transform>();
         rightWayPoint = GameObject.Find("RightWayPoint3").GetComponent<Transform>();
         
+        deathSound = GetComponent<AudioSource> ();
     }
 
     // Update is called once per frame
@@ -37,12 +39,13 @@ public class Enemy3Script : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col){
         if(col.gameObject.tag.Equals("FB")){
+            deathSound.Play ();
             ScoreScript.scoreValue+=1;
             Destroy(col.gameObject);
-            Destroy(gameObject);
+            moveSpeed = 0f;
+            Destroy(gameObject, deathSound.clip.length);
         }
     }
-
 
     void moveLeft(){
         movingRight = false;

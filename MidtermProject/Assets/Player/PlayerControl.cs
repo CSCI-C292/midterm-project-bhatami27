@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
+   
+
     public float moveSpeed = 3f;
     float velX;
     float velY;
     bool facingRight = true;
     Rigidbody2D rigBody;
     public float JumpForce = 1;
-    public GameObject bulletToRight, bulletToLeft, gameOverText, restartButton, s1, s2, s3;
+    public GameObject bulletToRight, bulletToLeft, gameOverText, restartButton, s1, s2, s3, hPU, bulletToRight2, bulletToLeft2, fbPU, gameWonText, restartButtonWon;
     public static int playerHealth = 3;
     //int playerLayer, enemyLayer;
     bool coroutineAllowed = true;
@@ -30,6 +32,7 @@ public class PlayerControl : MonoBehaviour
 
     bool isGrounded = false;
     bool isDashing;
+    bool oneLife = false;
     
 
 
@@ -44,11 +47,25 @@ public class PlayerControl : MonoBehaviour
         s1.gameObject.SetActive(true);
         s2.gameObject.SetActive(true);
         s3.gameObject.SetActive(true);
+
+        hPU = GameObject.Find("HealthPowerUp");
+        hPU.gameObject.SetActive(false);
+
+        fbPU= GameObject.Find("FBPowerUp");
+        fbPU.gameObject.SetActive(false);
+
         
 
         gameOverText.SetActive(false);
         restartButton.SetActive(false);
+
+        gameWonText.SetActive(false);
+        restartButtonWon.SetActive(false);
+        
         rigBody = GetComponent<Rigidbody2D>();
+
+        
+
 
 
     }
@@ -88,6 +105,11 @@ public class PlayerControl : MonoBehaviour
 
         }
 
+        if(BossScript.bossHealth == 0){
+            gameWonText.SetActive(true);
+            restartButtonWon.SetActive(true);
+        }
+
         
 
     }
@@ -111,31 +133,31 @@ public class PlayerControl : MonoBehaviour
         bulletPos=transform.position;
         if(facingRight)
         {
-            bulletPos+= new Vector2 (+1f,-0.43f);
+            bulletPos+= new Vector2 (+1.5f,-0.3f);
             Instantiate(bulletToRight, bulletPos, Quaternion.identity);
         }else{
-            bulletPos+= new Vector2 (-1f,-0.43f);
+            bulletPos+= new Vector2 (-1.5f,-0.3f);
             Instantiate(bulletToLeft, bulletPos, Quaternion.identity);
         }
     }
 
     void OnCollisionEnter2D(Collision2D col){
-        if(col.gameObject.tag.Equals("Enemy") || col.gameObject.tag.Equals("Boss") ){
+        if(col.gameObject.tag.Equals("Enemy") || col.gameObject.tag.Equals("Boss") || col.gameObject.tag.Equals("BossFB")){
             
 
             playerHealth -= 1;
             switch(playerHealth){
                 case 2:
                     s1.gameObject.SetActive(false);
-                    
                     break;
+
                 case 1:
                     s2.gameObject.SetActive(false);
-                   
+                    oneLife = true;
                     break;
+
                 case 0:
                     s3.gameObject.SetActive(false);
-                    
                     break;
             }
 
@@ -146,6 +168,34 @@ public class PlayerControl : MonoBehaviour
             }
 
          }
+
+         
+         if(col.gameObject.tag.Equals("HPowerUp")){
+             playerHealth+=1;
+             if(oneLife == true){
+                 s2.gameObject.SetActive(true);
+             }
+             else{s1.gameObject.SetActive(true);}
+             Destroy(col.gameObject);
+         }
+
+
+         if(ScoreScript.scoreValue == 12){
+            
+            hPU.gameObject.SetActive(true);
+         }
+
+         if(col.gameObject.tag.Equals("FBPowerUp")){
+             Destroy(col.gameObject);
+             bulletToLeft = bulletToLeft2;
+             bulletToRight = bulletToRight2;
+         }
+
+         if(ScoreScript.scoreValue == 30){
+            
+            fbPU.gameObject.SetActive(true);
+         }
+         
     }
 
 }

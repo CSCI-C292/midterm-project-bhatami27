@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy2Scipt : MonoBehaviour
-{
+public class EFF1 : MonoBehaviour
+{ 
     public AudioSource deathSound;
     public float moveSpeed = 3f;
     Transform leftWayPoint, rightWayPoint;
@@ -15,11 +15,10 @@ public class Enemy2Scipt : MonoBehaviour
     {
         localScale = transform.localScale;
         rb = GetComponent<Rigidbody2D>();
-        leftWayPoint = GameObject.Find("LeftWayPoint4").GetComponent<Transform>();
-        rightWayPoint = GameObject.Find("RightWayPoint4").GetComponent<Transform>();
-
-        deathSound = GetComponent<AudioSource> ();
+        leftWayPoint = GameObject.Find("LeftWayPoint8").GetComponent<Transform>();
+        rightWayPoint = GameObject.Find("RightWayPoint8").GetComponent<Transform>();
         
+        deathSound = GetComponent<AudioSource> ();
     }
 
     // Update is called once per frame
@@ -46,6 +45,7 @@ public class Enemy2Scipt : MonoBehaviour
             moveSpeed = 0f;
             Destroy(gameObject, deathSound.clip.length);
         }
+        
     }
 
 

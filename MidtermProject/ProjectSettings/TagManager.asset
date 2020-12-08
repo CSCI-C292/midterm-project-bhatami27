@@ -7,6 +7,9 @@ TagManager:
   - FB
   - Enemy
   - Boss
+  - HPowerUp
+  - FBPowerUp
+  - BossFB
   layers:
   - Default
   - TransparentFX

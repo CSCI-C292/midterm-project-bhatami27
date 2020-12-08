@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy2Scipt : MonoBehaviour
+public class EFFF3 : MonoBehaviour
 {
     public AudioSource deathSound;
     public float moveSpeed = 3f;
@@ -10,16 +10,16 @@ public class Enemy2Scipt : MonoBehaviour
     Vector3 localScale;
     bool movingRight = true;
     Rigidbody2D rb;
+    public PlayerControl playerControl;
     // Start is called before the first frame update
     void Start()
     {
         localScale = transform.localScale;
         rb = GetComponent<Rigidbody2D>();
-        leftWayPoint = GameObject.Find("LeftWayPoint4").GetComponent<Transform>();
-        rightWayPoint = GameObject.Find("RightWayPoint4").GetComponent<Transform>();
-
-        deathSound = GetComponent<AudioSource> ();
+        leftWayPoint = GameObject.Find("LeftWayPoint14").GetComponent<Transform>();
+        rightWayPoint = GameObject.Find("RightWayPoint14").GetComponent<Transform>();
         
+        deathSound = GetComponent<AudioSource> ();
     }
 
     // Update is called once per frame
@@ -46,13 +46,14 @@ public class Enemy2Scipt : MonoBehaviour
             moveSpeed = 0f;
             Destroy(gameObject, deathSound.clip.length);
         }
+        
     }
 
 
     void moveLeft(){
         movingRight = false;
         localScale.x = -1;
-        transform.localScale = localScale;
+        //transform.localScale = -.5;
         rb.velocity = new Vector2(localScale.x* moveSpeed, rb.velocity.y);
 
     }
@@ -60,8 +61,9 @@ public class Enemy2Scipt : MonoBehaviour
     void moveRight(){
         movingRight = true;
         localScale.x = 1;
-        transform.localScale = localScale;
+        //transform.localScale = .5;
         rb.velocity = new Vector2(localScale.x* moveSpeed, rb.velocity.y);
     }
 
 }
+
