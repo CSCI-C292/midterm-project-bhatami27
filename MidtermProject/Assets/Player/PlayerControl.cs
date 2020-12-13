@@ -15,7 +15,6 @@ public class PlayerControl : MonoBehaviour
     public GameObject bulletToRight, bulletToLeft, gameOverText, restartButton, s1, s2, s3, hPU, bulletToRight2, bulletToLeft2, fbPU, gameWonText, restartButtonWon;
     public static int playerHealth = 3;
     //int playerLayer, enemyLayer;
-    bool coroutineAllowed = true;
     Color color;
     Renderer rend;
 
@@ -30,7 +29,6 @@ public class PlayerControl : MonoBehaviour
     float CurrentDashTimer;
     float DashDirection;
 
-    bool isGrounded = false;
     bool isDashing;
     bool oneLife = false;
     
